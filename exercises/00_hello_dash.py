@@ -9,7 +9,7 @@ from dash import Dash, html
 
 # Create a Dash application instance - consider this as the main 
 # entry point of your Dash app.
-app = Dash(__name__)
+app = Dash()
 
 # Create the layout of the app using HTML components provided by Dash.
 app.layout = html.Div(

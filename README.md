@@ -18,6 +18,7 @@ A website for this workshop can be found at [ICCS Summer School 2026](https://ic
 
 - [Learning Objectives](#learning-objectives)
 - [Teaching material](#teaching-material)
+- [External Links](#external-links)
 - [Preparation and prerequisites](#preparation-and-prerequisites)
 - [Installation and setup](#installation-and-setup)
 - [License information](#license)
@@ -45,6 +46,13 @@ The slides for this workshop will be made available here after the session.
 ### Exercises
 The exercises for the course can be found in the [exercises](exercises/) directory.  
 These take the form of partially completed Python scripts that you will extend during the session.
+
+
+## External Links
+
+- [Dash User Guide](https://dash.plotly.com/)
+- [Dash in 20 Minutes Tutorial](https://dash.plotly.com/tutorial)
+- [Charming Data](https://www.youtube.com/@CharmingData) — great videos to help you with more advanced Dash 
 
 
 ## Preparation and prerequisites
