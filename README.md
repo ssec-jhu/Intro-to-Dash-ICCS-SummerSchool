@@ -100,22 +100,10 @@ pip install -r requirements.txt
 
 ### 3. Quickstart — verify Dash works
 
-Create a file called `test_app.py` (or run the snippet below) to confirm everything is working:
-
-```python
-from dash import Dash, html
-
-app = Dash(__name__)
-app.layout = html.H1("Hello Dash! 🎉 Your setup is working.")
-
-if __name__ == "__main__":
-    app.run(debug=True)
-```
-
-Run it:
+Run the first exercise file [`exercises/00_hello_dash.py`](exercises/00_hello_dash.py) to confirm everything is working:
 
 ```bash
-python exercises/00_hello_dash.py
+python3 exercises/00_hello_dash.py
 ```
 
 Open your browser at [http://127.0.0.1:8050](http://127.0.0.1:8050).  
