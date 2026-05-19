@@ -16,8 +16,19 @@ app.layout = html.Div(
     [
         # Define what coponents will be displayed on the webpage. 
         # In this case, we are displaying a simple heading.
-        html.H1("Hello Dash")
-    ])
+        html.H1("Hello Dash"),
+
+        # try uncommenting the following lines to see how you can customize the
+        # appearance of the components using the style property.
+        # html.H1(
+        #     children=["Welcome to ICCS Summer School!"],
+        #     style={
+        #         'color': 'blue', 
+        #         'fontSize': 14
+        #         }
+        #     ),
+    ]
+)
 
 if __name__ == "__main__":
     # setting debug=True will allow the app to automatically 
