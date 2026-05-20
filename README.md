@@ -55,6 +55,7 @@ These take the form of partially completed Python scripts that you will extend d
 - [Charming Data](https://www.youtube.com/@CharmingData) — great videos to help you with more advanced Dash 
 - [Dash Bootstrap Components](https://www.dash-bootstrap-components.com/docs/components/) a library of coponents that make it easier to build styled apps with complex layouts
 - [Dash Bootstrap Thee Explorer](https://hellodash.pythonanywhere.com/) Great place to brows themes
+- [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
 
 ## Examples
 - [Plotly Examples](https://plotly.com/examples/)
