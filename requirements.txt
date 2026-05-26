@@ -1,3 +1,4 @@
-dash>=2.14  # dash table needs dash version 2.14 or higher
+dash>=2.14
 pandas
 dash_bootstrap_components
+dash-ag-grid

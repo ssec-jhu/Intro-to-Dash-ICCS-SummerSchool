@@ -1,19 +1,20 @@
-# This is a simple Dash application that demonstrates how to use callbacks 
+# This is a simple Dash application that demonstrates how to use callbacks
 # to create interactivity.
 from dash import Dash, html, Input, Output, callback
 
 
-# Create a Dash application instance - consider this as the main 
+# Create a Dash application instance - consider this as the main
 # entry point of your Dash app.
 app = Dash()
 
 app.layout = html.Div(
     [
-        # Define a button and a div to display the output. 
+        # Define a button and a div to display the output.
         # The button has an id of "btn"
         html.Button("Click Me", id="id-btn"),
-        html.Div(id="id-output")
-    ])
+        html.Div(id="id-output"),
+    ]
+)
 
 
 @callback(
@@ -22,7 +23,7 @@ app.layout = html.Div(
     Output("id-output", "children"),
     # the Input() function specifies that this callback should be triggered
     # whenever the "n_clicks" property of the button with id "id-btn"
-    Input("id-btn", "n_clicks")
+    Input("id-btn", "n_clicks"),
 )
 def update_output(clicks):
     # This function will be called whenever the button is clicked.
