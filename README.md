@@ -18,6 +18,7 @@ A website for this workshop can be found at [ICCS Summer School 2026](https://ic
 
 - [Learning Objectives](#learning-objectives)
 - [Teaching material](#teaching-material)
+- [External Links](#external-links)
 - [Preparation and prerequisites](#preparation-and-prerequisites)
 - [Installation and setup](#installation-and-setup)
 - [License information](#license)
@@ -47,6 +48,22 @@ The exercises for the course can be found in the [exercises](exercises/) directo
 These take the form of partially completed Python scripts that you will extend during the session.
 
 
+## Useful Links
+
+- [Dash User Guide](https://dash.plotly.com/)
+- [Dash in 20 Minutes Tutorial](https://dash.plotly.com/tutorial)
+- [Charming Data](https://www.youtube.com/@CharmingData) — great videos to help you with more advanced Dash 
+- [Dash Bootstrap Components](https://www.dash-bootstrap-components.com/docs/components/) a library of coponents that make it easier to build styled apps with complex layouts
+- [Dash Bootstrap Thee Explorer](https://hellodash.pythonanywhere.com/) Great place to brows themes
+- [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
+
+## Examples
+- [Plotly Examples](https://plotly.com/examples/)
+- [SnapMine](https://snapmine.idies.jhu.edu/) An app for extracting splice junction information and Gene expression. Check out the repo at [ssec-jhu/levseq-dash](https://github.com/ssec-jhu/levseq-dash)
+- [Enzyme engineering Database](https://enzengdb.org/) A user interactive visualization tool for analyzing directed evolution experiments in protein engineering. Check out the repo at [ssec-jhu/snaptron-query-dash](https://github.com/ssec-jhu/snaptron-query).
+- [Enzymetk Tool Suit](https://github.com/ssec-jhu/enzyme-tk-app)
+
+
 ## Preparation and prerequisites
 
 ### Prerequisites
@@ -57,6 +74,7 @@ To get the most out of the session we assume:
 - The ability to use a terminal/command line
 - Familiarity with `git clone` to obtain the repository — if you are new to Git, the
   [ICCS Summer School Git intro](https://www.youtube.com/watch?v=ZrwzK4CnJ3Q) provides the necessary background.
+- Basic knowledge of HTML is a plus
 
 
 ### Preparation
@@ -100,22 +118,10 @@ pip install -r requirements.txt
 
 ### 3. Quickstart — verify Dash works
 
-Create a file called `test_app.py` (or run the snippet below) to confirm everything is working:
-
-```python
-from dash import Dash, html
-
-app = Dash(__name__)
-app.layout = html.H1("Hello Dash! 🎉 Your setup is working.")
-
-if __name__ == "__main__":
-    app.run(debug=True)
-```
-
-Run it:
+Run the first exercise file [`exercises/00_hello_dash.py`](exercises/00_hello_dash.py) to confirm everything is working:
 
 ```bash
-python exercises/00_hello_dash.py
+python3 exercises/00_hello_dash.py
 ```
 
 Open your browser at [http://127.0.0.1:8050](http://127.0.0.1:8050).  
