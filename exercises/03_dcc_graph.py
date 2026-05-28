@@ -14,6 +14,10 @@ from dash import Dash, html, dcc
 import plotly.express as px
 import pandas as pd
 
+
+app = Dash()
+
+
 # ── Load Data ────────────────────────────────────────────────────
 data_path = Path(__file__).parent.parent / "data" / "rse_data.csv"
 df = pd.read_csv(data_path)
@@ -58,8 +62,6 @@ fig_bar = px.bar(
 )
 fig_bar.update_layout(title_x=0.5)
 
-# ── Layout ───────────────────────────────────────────────────────
-app = Dash()
 
 app.layout = html.Div(
     children=[
