@@ -1,12 +1,16 @@
-# Visualising Data with dcc.Graph
-# ================================
-# In this exercise we display interactive charts using dcc.Graph
-# and Plotly Express — still no callbacks!
-#
-# The data is loaded from a shared CSV file.
-#
-# Run the app and explore the charts. Then tweak the code to try
-# different chart types and settings.
+"""
+Visualising Data with dcc.Graph
+================================
+In this exercise we display interactive charts using dcc.Graph
+and Plotly Express — still no callbacks!
+
+The data is loaded from a shared CSV file.
+
+Run the app and explore the charts. Then tweak the code to try
+different chart types and settings.
+
+Run:  python exercises/03_dcc_graph.py
+"""
 
 from pathlib import Path
 
@@ -16,20 +20,29 @@ import pandas as pd
 
 
 app = Dash()
+# import dash_bootstrap_components as dbc
+# from dash_bootstrap_templates import load_figure_template
+#
+# load_figure_template("minty")
+# dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+# app = Dash(external_stylesheets=[dbc.themes.MINTY, dbc_css])
 
 
-# ── Load Data ────────────────────────────────────────────────────
+# --------------------------
+# Load Data
+# --------------------------
 data_path = Path(__file__).parent.parent / "data" / "rse_data.csv"
 df = pd.read_csv(data_path)
 
-# ── Chart 1: Scatter — Coffee vs. Lines of Code ─────────────────
+# --------------------------
+# Chart 1: Scatter — Coffee vs. Lines of Code
+# --------------------------
 fig_scatter = px.scatter(
     df,
     x="coffees_per_day",
     y="lines_of_code",
     size="bugs_introduced",
     color="country",
-    # color="workshop_rating"  # Try: set color="workshop_rating" instead of country
     hover_name="research_software_engineer",
     hover_data=["university"],
     title="Coffee Consumption vs. Lines of Code Written",
@@ -42,7 +55,9 @@ fig_scatter = px.scatter(
 fig_scatter.update_layout(title_x=0.5)
 
 
-# ── Chart 2: Bar — Bug Rate (bugs per 100 lines of code) ────────
+# --------------------------
+# Chart 2: Bar — Bug Rate (bugs per 100 lines of code)
+# --------------------------
 df["bug_rate"] = (df["bugs_introduced"] / df["lines_of_code"] * 100).round(1)
 
 fig_bar = px.bar(
@@ -50,7 +65,7 @@ fig_bar = px.bar(
     x="research_software_engineer",  # categorical x-axis with RSE names
     y="bug_rate",  # numeric y-axis showing bugs per 100 lines of code
     color="coffees_per_day",  # colour bars by coffee consumption
-    color_continuous_scale="RdYlGn_r",
+    # color_continuous_scale="RdYlGn_r",
     title="Bugs per 100 Lines of Code",
     labels={
         # these labels will show up in the hover tooltip and axes
@@ -93,13 +108,13 @@ app.layout = html.Div(
             # space them out horizontally with flexbox
             style={"display": "flex", "gap": "20px"},
         ),
-        # --------------
+        # --------------------------
         # dcc.Graph (Scatter plot)
-        # --------------
+        # --------------------------
         dcc.Graph(figure=fig_scatter),
-        # --------------
+        # --------------------------
         # dcc.Graph (Bar)
-        # --------------
+        # --------------------------
         dcc.Graph(figure=fig_bar),
     ],
     style={"maxWidth": "1000px", "margin": "auto", "padding": "20px"},

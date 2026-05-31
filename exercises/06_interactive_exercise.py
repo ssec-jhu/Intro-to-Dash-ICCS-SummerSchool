@@ -7,28 +7,29 @@ Fill in the TODOs below to connect Dash components to a scatter chart.
 If you get stuck, check the solution: 05_interactive_exercise_solution.py
 """
 
-# ------------
+# --------------------------
 # Imports
-# -------------
+# --------------------------
 from dash import Dash, html  # https://dash.plotly.com/
 import plotly.express as px  # https://plotly.com/python/plotly-express/
 import dash_bootstrap_components as dbc  # https://dash-bootstrap-components.opensource.faculty.ai/
 from dash_bootstrap_templates import load_figure_template
 
-# ------------
+# --------------------------
 # Data
-# -------------
+# --------------------------
+# df columns: country, continent, year, lifeExp, pop, gdpPercap, iso_alpha, iso_num
 df = px.data.gapminder()
 
-# ------------
+# --------------------------
 # App setup
-# -------------
+# --------------------------
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
-app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY, dbc_css])
+app = Dash(__name__, external_stylesheets=[dbc.themes.MINTY, dbc_css])
 # loads the template and sets it as the default
-load_figure_template("FLATLY")
+load_figure_template("minty")
 
-# ╔══════════════════════════════════════════════════════════════════════╗
+# ╔════════════════════════════════════════════════════════════════════╗
 # ║ TODO 1: Add a dcc.Dropdown to filter by continent                  ║
 # ║                                                                    ║
 # ║  - id: "id-dropdown-continent"                                     ║
@@ -37,7 +38,7 @@ load_figure_template("FLATLY")
 # ║  - value: default to ALL continents selected                       ║
 # ║                                                                    ║
 # ║  Docs: https://dash.plotly.com/dash-core-components/dropdown       ║
-# ╚══════════════════════════════════════════════════════════════════════╝
+# ╚════════════════════════════════════════════════════════════════════╝
 dropdown = html.Div(
     children=["add your dcc.Dropdown here!"],
 )
@@ -48,9 +49,7 @@ dropdown = html.Div(
 # ║  - id: "id-slider-year"                                            ║
 # ║  - min: df["year"].min()                                           ║
 # ║  - max: df["year"].max()                                           ║
-# ║  - step: 5                                                         ║
 # ║  - value: 2007 (default year)                                      ║
-# ║  - marks: one mark per unique year in the data                     ║
 # ║                                                                    ║
 # ║  Docs: https://dash.plotly.com/dash-core-components/slider         ║
 # ╚══════════════════════════════════════════════════════════════════════╝
@@ -92,9 +91,9 @@ graph = html.Div(
     children=["add your dcc.Graph here!"],
 )
 
-# ------------
+# --------------------------
 # Layout
-# -------------
+# --------------------------
 app.layout = dbc.Container(
     [
         html.H1("Intro to Dash Interactive Exercise"),
@@ -129,24 +128,36 @@ app.layout = dbc.Container(
     style={"maxWidth": "900px", "padding": "20px"},
 )
 
-
-# ╔══════════════════════════════════════════════════════════════════════════════╗
-# ║ TODO 5: Write a @callback that updates the AG Grid                         ║
+# ╔════════════════════════════════════════════════════════════════════════════╗
+# ║ TODO 5: Write a @callback that updates the AG Grid - STUB BELOW            ║
 # ║                                                                            ║
-# ║  - Output: the "rowData" property of "id-grid-data"                       ║
+# ║  - Output: the "rowData" property of "id-grid-data"                        ║
 # ║  - Inputs:                                                                 ║
 # ║      1. "value" property of "id-dropdown-continent" (list of continents)   ║
 # ║      2. "value" property of "id-slider-year" (selected year)               ║
 # ║  - Inside the function:                                                    ║
 # ║      1. Filter df where continent is in selected_continents                ║
 # ║         AND year == selected_year                                          ║
-# ║      2. Return filtered.to_dict("records")                                ║
+# ║      2. Return filtered.to_dict("records")                                 ║
 # ║                                                                            ║
 # ║  Docs: https://dash.plotly.com/basic-callbacks                             ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# --------------------------
+# Callback 1: Update the AG Grid - STUB
+# --------------------------
+# @callback(
+#  TODO:
+#  set your inputs and outputs here,
+#  I have added the parameters to the function call for you already
+# )
+# def update_table(selected_continents, selected_continents):
+
+# TODO: filter the df by selected_continents and selected_continents and return
+#  the data as a list of dicts for the AG Grid
 
 
-# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ TODO 6: Write a @callback that updates the scatter chart                   ║
 # ║                                                                            ║
 # ║  - Output: the "figure" property of "id-graph-scatter"                     ║
@@ -156,34 +167,62 @@ app.layout = dbc.Container(
 # ║  - Inside the function:                                                    ║
 # ║      1. Filter df where continent is in selected_continents                ║
 # ║         AND year == selected_year                                          ║
-# ║      2. Create a px.scatter with x="gdpPercap", y="lifeExp",              ║
-# ║         size="pop", color="continent", hover_name="country"               ║
-# ║      3. Return the figure                                                 ║
+# ║      2. Create a px.scatter with x="gdpPercap", y="lifeExp",               ║
+# ║         size="pop", color="continent", hover_name="country"                ║
+# ║      3. Return the figure                                                  ║
 # ║                                                                            ║
 # ║  Docs: https://dash.plotly.com/basic-callbacks                             ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# --------------------------
+# Callback 2: Update the scatter chart - STUB
+# --------------------------
+# @callback(
+#  TODO:
+#  set your inputs and outputs here,
+#  I have added the parameters to the function call for you already
+# )
+# def update_scatter(selected_continents, selected_year):
+
+# TODO: filter the df by selected_continents and selected_year, create a
+#  px.scatter with x="gdpPercap", y="lifeExp", size="pop", color="continent",
+#  hover_name="country", and return the figure
 
 
-# ╔══════════════════════════════════════════════════════════════════════════════╗
+# ╔════════════════════════════════════════════════════════════════════════════╗
 # ║ TODO 7: Write a @callback that shows country details in the dbc.Card       ║
 # ║         when you click a point on the scatter chart                        ║
 # ║                                                                            ║
-# ║  - Output: the "children" property of "id-card-country"                   ║
-# ║  - Input: the "clickData" property of "id-graph-scatter"                  ║
+# ║  - Output: the "children" property of "id-card-country"                    ║
+# ║  - Input: the "clickData" property of "id-graph-scatter"                   ║
 # ║  - Inside the function:                                                    ║
 # ║      1. If clickData is None, return a placeholder message                 ║
 # ║      2. Extract the country name from clickData["points"][0]["hovertext"]  ║
 # ║      3. Look up that country in df and display its stats                   ║
 # ║      4. Return the content as a list of html components                    ║
-# ║         (e.g. [html.H4("Country"), html.P("Stat: value"), ...])           ║
+# ║         (e.g. [html.H4("Country"), html.P("Stat: value"), ...])            ║
 # ║                                                                            ║
 # ║  Docs (clickData): https://dash.plotly.com/interactive-graphing            ║
 # ║  Docs (Card): https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/  ║
-# ╚══════════════════════════════════════════════════════════════════════════════╝
+# ╚════════════════════════════════════════════════════════════════════════════╝
+
+# --------------------------
+# Callback 3: Show country details on click - STUB
+# --------------------------
+# @callback(
+#  TODO:
+#  set your inputs and outputs here,
+#  I have added the parameters to the function call for you already
+# )
+# def update_card(clickData):
+
+# TODO: if clickData is None, return a placeholder message. Otherwise, extract
+#  the country name from clickData["points"][0]["hovertext"], look it up in df,
+#  and return a list of html components with the country's stats
 
 
-# ------------
+# --------------------------
 # Run
-# -------------
+# --------------------------
 if __name__ == "__main__":
     app.run(debug=True)
