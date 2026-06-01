@@ -70,8 +70,7 @@ app.layout = html.Div(
             ],
             value="Data Visualisation",
             # multi=True,           # Try: set multi=True to allow selecting multiple tracks
-            # clearable = False,    # Try: add clearable=False to prevent clearing the selection
-            # placeholder = "Pick a track...", # Try: add placeholder="Pick a track..." and remove the value
+            # clearable = False, # Try: add clearable=False to prevent clearing the selection
         ),
         html.Br(),
         # --------------------------
@@ -91,7 +90,6 @@ app.layout = html.Div(
             value=6,
             marks={1: "😴", 3: "🍵", 5: "☕", 7: "☕☕", 10: "🚀"},
             # marks={1: "1", 3: "3", 5: "5", 7: "7", 10: "10"}, # Try: a different set of marks
-            # tooltip={"placement": "bottom", "always_visible": True} # Try: to see the tooltip all the time instead of just on hover
         ),
         html.Br(),
         # --------------------------
