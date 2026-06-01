@@ -96,6 +96,7 @@ app.layout = html.Div(
     # State: the day dropdown value is READ but does NOT trigger the callback.
     # Try changing the day — nothing happens until you change the column dropdown!
     State("id-dropdown-day", "value"),
+    # prevent_initial_call=True
 )
 def update_histogram(selected_column, selected_day):
     """
