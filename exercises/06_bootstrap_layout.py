@@ -37,7 +37,7 @@ row_style = {
     "border": "2px solid red",
     # "padding": "10px",
 }
-row_class = "p-2"  # this is dbc class for padding (adds padding inside the row)
+row_class = "p-2 mb-3"  # this is dbc class for padding (adds padding inside the row)
 
 # Blue border for columns so you can see each column's boundaries
 col_style = {
