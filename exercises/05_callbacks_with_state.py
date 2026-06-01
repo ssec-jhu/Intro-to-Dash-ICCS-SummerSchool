@@ -17,7 +17,7 @@ Run:  python exercises/05_callbacks_with_state.py
 # --------------------------
 # Imports
 # --------------------------
-from dash import Dash, html, dcc, callback, Input, Output, State
+from dash import Dash, ctx, html, dcc, callback, Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc  # https://dash-bootstrap-components.opensource.faculty.ai/
 from dash_bootstrap_templates import load_figure_template
@@ -104,6 +104,9 @@ def update_histogram(selected_column, selected_day):
     It reads the current-day dropdown value (State), but changing that
     dropdown alone will NOT cause this function to re-run.
     """
+    # use ctx to check which Input triggered the callback (optional, for demonstration)
+    triggered_id = ctx.triggered_id
+
     # Filter the dataframe by the selected day (State value)
     filtered = df[df["day"] == selected_day]
 
