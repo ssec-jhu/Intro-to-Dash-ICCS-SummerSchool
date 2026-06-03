@@ -1,12 +1,16 @@
-# Displaying Data with Dash AG Grid
-# ===================================
-# In this exercise we display an interactive table using dag.AgGrid
-# — still no callbacks!
-#
-# The data is loaded from a shared CSV file (same one used by 03_dcc_graph.py).
-#
-# Run the app and explore sorting, filtering, and pagination.
-# Then tweak column definitions and grid options.
+"""
+Displaying Data with Dash AG Grid
+===================================
+In this exercise we display an interactive table using dag.AgGrid
+— still no callbacks!
+
+The data is loaded from a shared CSV file (same one used by 03_dcc_graph.py).
+
+Run the app and explore sorting, filtering, and pagination.
+Then tweak column definitions and grid options.
+
+Run:  python exercises/04_ag_grid.py
+"""
 
 from pathlib import Path
 
@@ -14,11 +18,15 @@ from dash import Dash, html
 import dash_ag_grid as dag
 import pandas as pd
 
-# ── Load Data ────────────────────────────────────────────────────
+# --------------------------
+# Load Data
+# --------------------------
 data_path = Path(__file__).parent.parent / "data" / "rse_data.csv"
 df = pd.read_csv(data_path)
 
-# ── Column Definitions ────────────────────────────────────────────
+# --------------------------
+# Column Definitions
+# --------------------------
 column_defs = [
     {"field": "research_software_engineer", "headerName": "RSE"},
     {"field": "country", "headerName": "Country"},
@@ -31,7 +39,9 @@ column_defs = [
 # TODO: Try setting sortable=False on a column, e.g. {"field": "Country", "sortable": False}
 
 
-# ── Layout ───────────────────────────────────────────────────────
+# --------------------------
+# Layout
+# --------------------------
 app = Dash(
     # need this for the rowClassRules styling in the second grid below
     external_stylesheets=[

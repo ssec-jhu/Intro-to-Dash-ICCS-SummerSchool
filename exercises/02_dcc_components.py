@@ -1,28 +1,38 @@
-# Exploring Dash Core Components (dcc)
-# =====================================
-# Dash ships with a set of interactive UI components called
-# Dash Core Components (dcc). These include dropdowns, sliders,
-# checklists, text inputs, and more.
-#
-# This exercise is a playground — run the app and see how each
-# component renders. Then start tweaking!
-#
-# There are NO callbacks here — these components just display
-# on the page. In a later exercise we'll wire them up to make
-# the app respond to user input.
+"""
+Exploring Dash Core Components (dcc)
+======================================
+Dash ships with a set of interactive UI components called
+Dash Core Components (dcc). These include dropdowns, sliders,
+checklists, text inputs, and more.
+
+This exercise is a playground — run the app and see how each
+component renders. Then start tweaking!
+
+There are NO callbacks here — these components just display
+on the page. In a later exercise we'll wire them up to make
+the app respond to user input.
+
+Run:  python exercises/02_dcc_components.py
+"""
 
 from dash import Dash, html, dcc
 from datetime import date
 
 app = Dash()
+# import dash_bootstrap_components as dbc
+# from dash_bootstrap_templates import load_figure_template
+
+# load_figure_template("pulse")
+# dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+# app = Dash(external_stylesheets=[dbc.themes.PULSE, dbc_css])
 
 app.layout = html.Div(
     # this style centers the content and adds some padding around the edges
     style={"maxWidth": "800px", "margin": "auto", "padding": "20px"},
     children=[
-        # --------------
+        # --------------------------
         # dcc.Markdown
-        # --------------
+        # --------------------------
         # dcc.Markdown lets you write rich text using Markdown syntax.
         dcc.Markdown("""
             ## ICCS Summer School
@@ -39,10 +49,9 @@ app.layout = html.Div(
         """),
         # This adds a spacing between the current component and the next component.
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.Dropdown
-        #
-        # --------------
+        # --------------------------
         html.H3("dcc.dropdown"),
         html.A(
             "Dropdown docs",
@@ -61,13 +70,12 @@ app.layout = html.Div(
             ],
             value="Data Visualisation",
             # multi=True,           # Try: set multi=True to allow selecting multiple tracks
-            # clearable = False,    # Try: add clearable=False to prevent clearing the selection
-            # placeholder = "Pick a track...", # Try: add placeholder="Pick a track..." and remove the value
+            # clearable = False, # Try: add clearable=False to prevent clearing the selection
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.Slider
-        # --------------
+        # --------------------------
         html.H3("dcc.Slider"),
         html.A(
             "Slider docs",
@@ -82,12 +90,11 @@ app.layout = html.Div(
             value=6,
             marks={1: "😴", 3: "🍵", 5: "☕", 7: "☕☕", 10: "🚀"},
             # marks={1: "1", 3: "3", 5: "5", 7: "7", 10: "10"}, # Try: a different set of marks
-            # tooltip={"placement": "bottom", "always_visible": True} # Try: to see the tooltip all the time instead of just on hover
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.RangeSlider
-        # --------------
+        # --------------------------
         html.H3("dcc.RangeSlider"),
         html.A(
             "RangeSlider docs",
@@ -105,9 +112,9 @@ app.layout = html.Div(
             # Try: change step=0.5 for half-hour granularity
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.RadioItems
-        # --------------
+        # --------------------------
         html.H3("dcc.RadioItems"),
         html.A(
             "RadioItems docs",
@@ -122,9 +129,9 @@ app.layout = html.Div(
             # Try: add a new language to the list
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.Checklist
-        # --------------
+        # --------------------------
         html.H3("dcc.Checklist"),
         html.A(
             "Checklist docs",
@@ -145,9 +152,9 @@ app.layout = html.Div(
             # inline=False # Try: set inline=False to stack them vertically
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.Input
-        # --------------
+        # --------------------------
         html.H3("dcc.Input"),
         html.A(
             "Input docs",
@@ -176,9 +183,9 @@ app.layout = html.Div(
         ),
         html.Br(),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.Textarea
-        # --------------
+        # --------------------------
         html.H3("dcc.Textarea"),
         html.A(
             "Textarea docs",
@@ -194,9 +201,9 @@ app.layout = html.Div(
             # Try: pre-fill with a default value
         ),
         html.Br(),
-        # --------------
+        # --------------------------
         # dcc.DatePickerSingle
-        # --------------
+        # --------------------------
         html.H3("dcc.DatePickerSingle"),
         html.A(
             "DatePickerSingle docs",

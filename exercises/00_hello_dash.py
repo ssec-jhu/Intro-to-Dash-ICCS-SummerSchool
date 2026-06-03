@@ -1,10 +1,16 @@
-# This is a simple Dash application that displays
-# "Hello Dash" as a heading. To run this code,
-# make sure you have the Dash library installed in
-# your Python environment.
-# You can install required dependencies using the requirements.txt
-# file provided in the repository:
-# run `pip install -r requirements.txt` in your terminal.
+"""
+Hello Dash — Minimal App
+=========================
+This is a simple Dash application that displays "Hello Dash" as a heading.
+
+Make sure you have the Dash library installed in your Python environment.
+You can install required dependencies using the requirements.txt file
+provided in the repository:
+    pip install -r requirements.txt
+
+Run:  python exercises/00_hello_dash.py
+"""
+
 from dash import Dash, html
 
 # Create a Dash application instance - consider this as the main

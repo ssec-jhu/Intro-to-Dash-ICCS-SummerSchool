@@ -1,5 +1,12 @@
-# This is a simple Dash application that demonstrates how to use callbacks
-# to create interactivity.
+"""
+Hello Dash Callback — Interactivity Basics
+============================================
+This is a simple Dash application that demonstrates how to use callbacks
+to create interactivity.
+
+Run:  python exercises/01_hello_dash_callback.py
+"""
+
 from dash import Dash, html, Input, Output, callback
 
 

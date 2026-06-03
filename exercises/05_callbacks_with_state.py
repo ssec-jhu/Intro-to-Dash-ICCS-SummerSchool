@@ -14,22 +14,30 @@ Dataset: Plotly Express built-in "tips" dataset (restaurant tipping data).
 Run:  python exercises/05_callbacks_with_state.py
 """
 
-# ─── Imports ──────────────────────────────────────────────────────────
-from dash import Dash, html, dcc, callback, Input, Output, State
+# --------------------------
+# Imports
+# --------------------------
+from dash import Dash, ctx, html, dcc, callback, Input, Output, State
 import plotly.express as px
 import dash_bootstrap_components as dbc  # https://dash-bootstrap-components.opensource.faculty.ai/
 from dash_bootstrap_templates import load_figure_template
 
-# ─── Data ─────────────────────────────────────────────────────────────
+# --------------------------
+# Data
+# --------------------------
 df = px.data.tips()  # columns: total_bill, tip, sex, smoker, day, time, size
 
-# ─── App setup ────────────────────────────────────────────────────────
+# --------------------------
+# App setup
+# --------------------------
 dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
 app = Dash(external_stylesheets=[dbc.themes.PULSE, dbc_css])
 # loads the template and sets it as the default
 load_figure_template("PULSE")
 
-# ─── Layout ───────────────────────────────────────────────────────────
+# --------------------------
+# Layout
+# --------------------------
 app.layout = html.Div(
     [
         html.H2("Tips Dataset — Callbacks with Input and State"),
@@ -88,6 +96,7 @@ app.layout = html.Div(
     # State: the day dropdown value is READ but does NOT trigger the callback.
     # Try changing the day — nothing happens until you change the column dropdown!
     State("id-dropdown-day", "value"),
+    # prevent_initial_call=True
 )
 def update_histogram(selected_column, selected_day):
     """
@@ -95,6 +104,9 @@ def update_histogram(selected_column, selected_day):
     It reads the current-day dropdown value (State), but changing that
     dropdown alone will NOT cause this function to re-run.
     """
+    # use ctx to check which Input triggered the callback (optional, for demonstration)
+    triggered_id = ctx.triggered_id
+
     # Filter the dataframe by the selected day (State value)
     filtered = df[df["day"] == selected_day]
 
