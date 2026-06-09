@@ -53,15 +53,15 @@ These take the form of partially completed Python scripts that you will extend d
 - [Dash User Guide](https://dash.plotly.com/)
 - [Dash in 20 Minutes Tutorial](https://dash.plotly.com/tutorial)
 - [Charming Data](https://www.youtube.com/@CharmingData) — great videos to help you with more advanced Dash 
-- [Dash Bootstrap Components](https://www.dash-bootstrap-components.com/docs/components/) a library of coponents that make it easier to build styled apps with complex layouts
-- [Dash Bootstrap Thee Explorer](https://hellodash.pythonanywhere.com/) Great place to brows themes
+- [Dash Bootstrap Components](https://www.dash-bootstrap-components.com/docs/components/) a library of components that make it easier to build styled apps with complex layouts
+- [Dash Bootstrap Theme Explorer](https://hellodash.pythonanywhere.com/) Great place to browse themes
 - [Dash Bootstrap Cheatsheet](https://dashcheatsheet.pythonanywhere.com/)
 
 ## Examples
 - [Plotly Examples](https://plotly.com/examples/)
 - [SnapMine](https://snapmine.idies.jhu.edu/) An app for extracting splice junction information and Gene expression. Check out the repo at [ssec-jhu/levseq-dash](https://github.com/ssec-jhu/levseq-dash)
 - [Enzyme engineering Database](https://enzengdb.org/) A user interactive visualization tool for analyzing directed evolution experiments in protein engineering. Check out the repo at [ssec-jhu/snaptron-query-dash](https://github.com/ssec-jhu/snaptron-query).
-- [Enzymetk Tool Suit](https://github.com/ssec-jhu/enzyme-tk-app)
+- [Enzymetk Tool Suite](https://github.com/ssec-jhu/enzyme-tk-app)
 
 
 ## Preparation and prerequisites

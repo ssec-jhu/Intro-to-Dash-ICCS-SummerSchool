@@ -20,7 +20,7 @@ app = Dash()
 # Create the layout of the app using HTML components provided by Dash.
 app.layout = html.Div(
     [
-        # Define what coponents will be displayed on the webpage.
+        # Define what components will be displayed on the webpage.
         # In this case, we are displaying a simple heading.
         html.H1("Hello Dash"),
         # try uncommenting the following lines to see how you can customize the
