@@ -66,7 +66,7 @@ app.layout = html.Div(
                 "High-Performance Computing",
                 "Research Software Engineering",
                 "Climate Modelling",
-                "Intor to Git and GitHub",
+                "Intro to Git and GitHub",
             ],
             value="Data Visualisation",
             # multi=True,           # Try: set multi=True to allow selecting multiple tracks
