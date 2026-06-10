@@ -95,7 +95,7 @@ If you require assistance with any of these please reach out to us before the se
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Cambridge-ICCS/Intro-to-Dash-ICCS-SummerSchool.git
+git clone https://github.com/ssec-jhu/Intro-to-Dash-ICCS-SummerSchool.git
 cd Intro-to-Dash-ICCS-SummerSchool
 ```
 
@@ -104,8 +104,8 @@ cd Intro-to-Dash-ICCS-SummerSchool
 #### Option A — Using the terminal (venv)
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
+python3 -m venv your-env-name-here
+source your-env-name-here/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
