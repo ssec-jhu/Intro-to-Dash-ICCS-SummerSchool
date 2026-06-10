@@ -61,6 +61,8 @@ first_row = html.Div(
                 dbc.Col(html.Div("Col 1 of 3"), style=col_style),
                 dbc.Col(html.Div("Col 2 of 3"), style=col_style),
                 dbc.Col(html.Div("Col 3 of 3"), style=col_style),
+                # Try adding another column here and see what happens!
+                # dbc.Col(html.Div("Another Column!"), style=col_style),
             ],
             style=row_style,
             className=row_class,
@@ -77,6 +79,8 @@ second_row = html.Div(
                 dbc.Col(html.Div("Col width=6"), width=6, style=col_style),
                 dbc.Col(html.Div("Col width=3"), width=3, style=col_style),
                 dbc.Col(html.Div("Col width=3"), width=3, style=col_style),
+                # Try changing the widths here and see what happens!
+                # Try commenting some columns and see what happens!
             ],
             style=row_style,
             className=row_class,
@@ -115,6 +119,8 @@ fourth_row = html.Div(
                 dbc.Col(html.Div("Col width=2 (start)"), width=2, style=col_style),
                 dbc.Col(html.Div("Col width=2 (end)"), width=2, style=col_style),
             ],
+            # this will push the columns to opposite ends of the row
+            # Try changing justify to "center" or "end"
             justify="between",
             style=row_style,
             className=row_class,

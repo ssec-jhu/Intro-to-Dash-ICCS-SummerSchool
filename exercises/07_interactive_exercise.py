@@ -85,7 +85,7 @@ def get_switch_component():
     return html.Div(
         children=[
             "add your dbc.Switch here!"
-    ],
+        ],
     )
 
 
@@ -108,7 +108,6 @@ def get_grid_component():
             "add your dag.AgGrid here!"
         ],
     )
-
 
 
 def get_graph_component(log_x=True):
@@ -166,7 +165,7 @@ app.layout = dbc.Container(
         dbc.Card(
             [
                 dbc.CardHeader(
-                    children="Country Details", 
+                    children="Country Details",
                     id="id-card-header"
                 ),
                 dbc.CardBody(
@@ -207,7 +206,6 @@ app.layout = dbc.Container(
 # )
 # def update_table(selected_continents, year_range):
 #     # TODO: filter df by continent and year range, return as list of dicts
-
 
 
 # ╔════════════════════════════════════════════════════════════════════════════╗
