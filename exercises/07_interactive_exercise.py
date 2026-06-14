@@ -4,13 +4,13 @@ Interactive Gapminder Dashboard — EXERCISE
 Build an interactive dashboard step by step!
 Fill in the TODOs below to connect Dash components to a scatter chart.
 
-If you get stuck, check the solution: 06_interactive_exercise_solution.py
+If you get stuck, check the solution: 07_interactive_exercise_solution.py
 """
 
 # --------------------------
 # Imports
 # --------------------------
-from dash import Dash, html  # https://dash.plotly.com/
+from dash import Dash, html, dcc  # https://dash.plotly.com/
 import plotly.express as px  # https://plotly.com/python/plotly-express/
 import dash_bootstrap_components as dbc  # https://dash-bootstrap-components.opensource.faculty.ai/
 from dash_bootstrap_templates import load_figure_template
@@ -32,17 +32,24 @@ load_figure_template("minty")
 
 def get_dropdown_component():
     """Continent multi-select dropdown."""
-    # ╔════════════════════════════════════════════════════════════════════╗
-    # ║ TODO 1: Complete get_dropdown_component()                          ║
-    # ║                                                                    ║
-    # ║  Return an html.Div containing a dcc.Dropdown with:                ║
-    # ║  - id: "id-dropdown-continent"                                     ║
-    # ║  - multi=True (allow selecting multiple continents)                ║
-    # ║  - options: one option per unique value in df["continent"]         ║
-    # ║  - value: default to ALL continents selected                       ║
-    # ║                                                                    ║
-    # ║  Docs: https://dash.plotly.com/dash-core-components/dropdown       ║
-    # ╚════════════════════════════════════════════════════════════════════╝
+    # ╔═════════════════════════════════════════════════════════════════════════╗
+    # ║ TODO 1: get_dropdown_component()                                        ║
+    # ║                                                                         ║
+    # ║  Return an html.Div containing a dcc.Dropdown that lets users pick      ║
+    # ║  one or more continents to filter the data.                             ║
+    # ║                                                                         ║
+    # ║  Properties:                                                            ║
+    # ║  - id: "id-dropdown-continent"                                          ║
+    # ║  - options: the unique continent values from df["continent"]            ║
+    # ║  - value: all , one or no continents selected by default                ║
+    # ║  - multi-select enabled                                                 ║
+    # ║                                                                         ║
+    # ║  Docs: https://dash.plotly.com/dash-core-components/dropdown            ║
+    # ║                                                                         ║
+    # ║  Hints:                                                                 ║
+    # ║  - df["continent"].unique() gives a list of unique values               ║
+    # ║  - the multi property (boolean) enables multi-select                    ║
+    # ╚═════════════════════════════════════════════════════════════════════════╝
     return html.Div(
         children=[
             "add your dcc.Dropdown here!"
@@ -52,17 +59,24 @@ def get_dropdown_component():
 
 def get_range_slider_component():
     """Year range slider to filter the table."""
-    # ╔══════════════════════════════════════════════════════════════════════╗
-    # ║ TODO 2: Complete get_range_slider_component()                        ║
-    # ║                                                                      ║
-    # ║  Return an html.Div containing a dcc.RangeSlider with:               ║
-    # ║  - id: "id-slider-year-range"                                        ║
-    # ║  - min: df["year"].min()                                             ║
-    # ║  - max: df["year"].max()                                             ║
-    # ║  - value: [min_year, max_year] (default to full range)               ║
-    # ║                                                                      ║
-    # ║  Docs: https://dash.plotly.com/dash-core-components/rangeslider      ║
-    # ╚══════════════════════════════════════════════════════════════════════╝
+    # ╔═════════════════════════════════════════════════════════════════════════╗
+    # ║ TODO 2: get_range_slider_component()                                    ║
+    # ║                                                                         ║
+    # ║  Return an html.Div containing a dcc.RangeSlider that lets users        ║
+    # ║  select a year range to filter the table.                               ║
+    # ║                                                                         ║
+    # ║  Properties:                                                            ║
+    # ║  - id: "id-slider-year-range"                                           ║
+    # ║  - min/max: derived from df["year"]                                     ║
+    # ║  - value: default to the full range [min_year, max_year]                ║
+    # ║                                                                         ║
+    # ║  Docs: https://dash.plotly.com/dash-core-components/rangeslider         ║
+    # ║                                                                         ║
+    # ║  Hints:                                                                 ║
+    # ║  - df["year"].min() gets the minimum year as an integer                 ║
+    # ║  - df["year"].max() gets the maximum year as an integer                 ║
+    # ║  - value takes a two-element list: [min, max]                           ║
+    # ╚═════════════════════════════════════════════════════════════════════════╝
     return html.Div(
         children=[
             "add your dcc.RangeSlider here!"
@@ -72,16 +86,23 @@ def get_range_slider_component():
 
 def get_switch_component():
     """Toggle switch for log x-axis on the scatter chart."""
-    # ╔══════════════════════════════════════════════════════════════════════╗
-    # ║ TODO 3: Complete get_switch_component()                              ║
-    # ║                                                                      ║
-    # ║  Return an html.Div containing a dbc.Switch with:                    ║
-    # ║  - id: "id-switch-log"                                               ║
-    # ║  - label: "Log x-axis"                                               ║
-    # ║  - value: True (log scale on by default)                             ║
-    # ║                                                                      ║
-    # ║  Docs: https://dash-bootstrap-components.opensource.faculty.ai/docs/components/input/  
-    # ╚══════════════════════════════════════════════════════════════════════╝
+    # ╔══════════════════════════════════════════════════════════════════════════╗
+    # ║ TODO 3: get_switch_component()                                          ║
+    # ║                                                                         ║
+    # ║  Return an html.Div containing a dbc.Switch that controls whether       ║
+    # ║  the scatter chart x-axis is logarithmic or linear. You already         ║
+    # ║  imported dbc in exercise 06 — check the dbc docs for a Switch.         ║
+    # ║                                                                         ║
+    # ║  Properties:                                                            ║
+    # ║  - id: "id-switch-log"                                                  ║
+    # ║  - label: anything descriptive                                          ║
+    # ║  - value: should default be set to on or off?                            ║
+    # ║                                                                         ║
+    # ║  Docs: https://dash-bootstrap-components.opensource.faculty.ai/docs/components/input/                                                ║
+    # ║                                                                         ║
+    # ║  Hints:                                                                 ║
+    # ║  - dbc.Switch value is a boolean (True/False)                           ║
+    # ╚═════════════════════════════════════════════════════════════════════════╝
     return html.Div(
         children=[
             "add your dbc.Switch here!"
@@ -91,47 +112,62 @@ def get_switch_component():
 
 def get_grid_component():
     """AG Grid showing the gapminder data."""
-    # ╔════════════════════════════════════════════════════════════════════╗
-    # ║ TODO 4: Complete get_grid_component()                              ║
-    # ║                                                                    ║
-    # ║  Return an html.Div containing a dag.AgGrid with:                  ║
-    # ║  - id: "id-grid-data"                                              ║
-    # ║  - columnDefs: [{"field": col} for col in df.columns]              ║
-    # ║  - rowData: df.to_dict("records")                                  ║
-    # ║  - dashGridOptions: {"pagination": True, "paginationPageSize": 10} ║
-    # ║  - columnSize: "sizeToFit"                                         ║
-    # ║                                                                    ║
-    # ║  Docs: https://dash.plotly.com/dash-ag-grid/getting-started        ║
-    # ╚════════════════════════════════════════════════════════════════════╝
+    # ╔═════════════════════════════════════════════════════════════════════════╗
+    # ║ TODO 4: get_grid_component()                                            ║
+    # ║                                                                         ║
+    # ║  Return an html.Div containing a paginated data table that shows        ║
+    # ║  the gapminder DataFrame. Look at exercise 04_ag_grid.py to see how     ║
+    # ║  a grid is set up — what import, properties, and options did it use?    ║
+    # ║                                                                         ║
+    # ║  Properties:                                                            ║
+    # ║  - id: "id-grid-data"                                                   ║
+    # ║  - enable pagination (10 rows per page)                                 ║
+    # ║  - set columnSize: "sizeToFit"                                          ║
+    # ║                                                                         ║
+    # ║  Docs: https://dash.plotly.com/dash-ag-grid/getting-started             ║
+    # ║                                                                         ║
+    # ║  Hints:                                                                 ║
+    # ║  - check 04_ag_grid.py: what library is imported and how is rowData     ║
+    # ║    set from a DataFrame?                                                ║
+    # ║  - [{"field": col} for col in df.columns] builds column definitions     ║
+    # ║    for every column automatically                                       ║
+    # ╚═════════════════════════════════════════════════════════════════════════╝
     return html.Div(
         children=[
-            "add your dag.AgGrid here!"
+            "add your dash ag-grid here!"
         ],
     )
 
 
-def get_graph_component(log_x=True):
+def get_graph_component(log_x: bool = True):
     """Scatter chart with an initial figure. log_x sets the default x-axis scale."""
-    # ╔══════════════════════════════════════════════════════════════════════════╗
-    # ║ TODO 5: Complete get_graph_component(log_x)                             ║
+    # ╔═════════════════════════════════════════════════════════════════════════╗
+    # ║ TODO 5: get_graph_component(log_x)                                      ║
     # ║                                                                         ║
-    # ║  Return an html.Div containing a dcc.Graph with:                        ║
+    # ║  Return an html.Div containing a dcc.Graph with a px.scatter bubble     ║
+    # ║  chart of the full gapminder dataset. See 03_dcc_graph.py for how       ║
+    # ║  px.scatter and dcc.Graph work together.                                ║
+    # ║                                                                         ║
+    # ║  Properties:                                                            ║
     # ║  - id: "id-graph-scatter"                                               ║
-    # ║  - figure: a px.scatter of the FULL df with:                            ║
-    # ║      x = "gdpPercap"                                                    ║
-    # ║      y = "lifeExp"                                                      ║
-    # ║      size = "pop"          (maps to bubble size)                        ║
-    # ║      size_max = 40   (max bubble pixel size — prevents overlap)         ║
-    # ║      color = "continent"   (maps to point color + legend)               ║
-    # ║      hover_name = "country"   (bold title in hover tooltip)             ║
-    # ║      hover_data = ["year"]   (extra info shown in tooltip)              ║
-    # ║      log_x = log_x   (use the function parameter!)                      ║
+    # ║  - figure: a px.scatter of the full df where:                           ║
+    # ║      x-axis: GDP per capita column                                      ║
+    # ║      y-axis: life expectancy column                                     ║
+    # ║      bubble size: population column                                     ║
+    # ║      color: by continent                                                ║
+    # ║      hover: set hover_name="country" and hover_data=["year"],           ║
+    # ║      log_x: use the function parameter                                  ║
     # ║                                                                         ║
-    # ║  Docs:                                                                  ║
-    # ║    https://dash.plotly.com/dash-core-components/graph                   ║
-    # ║    https://plotly.com/python/line-and-scatter/                          ║
-    # ║    https://plotly.com/python-api-reference/generated/plotly.express.scatter.html  ║
-    # ╚══════════════════════════════════════════════════════════════════════════╝
+    # ║  Docs: https://dash.plotly.com/dash-core-components/graph               ║
+    # ║        https://plotly.com/python/line-and-scatter/                      ║
+    # ║                                                                         ║
+    # ║  Hints:                                                                 ║
+    # ║  - log_x is a boolean (True/False), not an integer                      ║
+    # ║  - size_max=40 caps the largest bubble so they don't overlap            ║
+    # ║  - hover_name makes a bold title; hover_data adds extra tooltip fields  ║
+    # ║  - create the figure first: fig = px.scatter(df, ...)                   ║
+    # ║  - then pass it to dcc.Graph(id=..., figure=fig)                        ║
+    # ╚═════════════════════════════════════════════════════════════════════════╝
     return html.Div(
         children=[
             "add your dcc.Graph with initial px.scatter figure here!"
@@ -179,22 +215,32 @@ app.layout = dbc.Container(
     style={"maxWidth": "900px", "padding": "20px"},
 )
 
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ TODO 6:                                                                    ║
-# ║     Write a @callback that updates the AG Grid based on                    ║
-# ║     selected continents (the dropdown) and year range (the range slider)   ║
-# ║                                                                            ║
-# ║  - Output: the "rowData" property of "id-grid-data"                        ║
-# ║  - Inputs:                                                                 ║
-# ║      1. "value" property of "id-dropdown-continent" (list of continents)   ║
-# ║      2. "value" property of "id-slider-year-range" (a list: [min, max])    ║
-# ║  - Inside the function:                                                    ║
-# ║      1. Filter df where continent is in selected_continents                ║
-# ║         AND year >= year_range[0] AND year <= year_range[1]                ║
-# ║      2. Return filtered.to_dict("records")                                 ║
-# ║                                                                            ║
-# ║  Docs: https://dash.plotly.com/basic-callbacks                             ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# ║ TODO 6: Callback — update the AG Grid                                   ║
+# ║                                                                         ║
+# ║  Write a @callback that filters the grid when the user changes the      ║
+# ║  continent dropdown or the year range slider.                           ║
+# ║                                                                         ║
+# ║  Properties:                                                            ║
+# ║  - Output: "rowData" property of "id-grid-data"                         ║
+# ║  - Inputs:                                                              ║
+# ║      1. "value" of "id-dropdown-continent" (list of continents)         ║
+# ║      2. "value" of "id-slider-year-range"  (list: [min, max])           ║
+# ║  - Filter df by continent AND year range, return as list of dicts       ║
+# ║                                                                         ║
+# ║  Docs: https://dash.plotly.com/basic-callbacks                          ║
+# ║                                                                         ║
+# ║  Hints:                                                                 ║
+# ║  - Think: what do you need to add to your dash imports for callbacks?   ║
+# ║    Look back at exercise 06 for reference.                              ║
+# ║  - df[df["col"].isin(values)] filters rows by a list of values          ║
+# ║  - chain multiple conditions with & (wrap each in parentheses):         ║
+# ║      filtered = df[(condition_1) & (condition_2)]                       ║
+# ║    e.g. df[(df["continent"].isin(continents)) & (df["year"] >= min)]    ║
+# ║  - for year range: (df["year"] >= year_range[0]) &                      ║
+# ║                     (df["year"] <= year_range[1])                       ║
+# ║  - convert result to records: filtered.to_dict("records")               ║
+# ╚═════════════════════════════════════════════════════════════════════════╝
 
 # --------------------------
 # Callback 1: Update the AG Grid - STUB
@@ -208,20 +254,23 @@ app.layout = dbc.Container(
 #     # TODO: filter df by continent and year range, return as list of dicts
 
 
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ TODO 7:                                                                    ║
-# ║     Write a @callback that updates the scatter chart's x-axis scale  to be ║
-# ║     log based or not log based                                             ║
-# ║                                                                            ║
-# ║  - Output: the "children" property of "id-graph-container"                 ║
-# ║  - Input: "value" property of "id-switch-log" (True/False)                 ║
-# ║  - Inside the function:                                                    ║
-# ║      1. Call get_graph_component(log_x=bool(log_x))                        ║
-# ║      2. Return the result                                                  ║
-# ║  - Users can filter continents using the chart's built-in legend!          ║
-# ║                                                                            ║
-# ║  Docs: https://dash.plotly.com/basic-callbacks                             ║
-# ╚════════════════════════════════════════════════════════════════════════════╝
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# ║ TODO 7: Callback — toggle log scale on scatter chart                    ║
+# ║                                                                         ║
+# ║  Write a @callback that re-renders the scatter chart when the user      ║
+# ║  flips the log-scale switch.                                            ║
+# ║                                                                         ║
+# ║  Properties:                                                            ║
+# ║  - Output: "children" property of "id-graph-container"                  ║
+# ║  - Input: "value" property of "id-switch-log" (True/False)              ║
+# ║  - Call get_graph_component(log_x=...) and return the result            ║
+# ║                                                                         ║
+# ║  Docs: https://dash.plotly.com/basic-callbacks                          ║
+# ║                                                                         ║
+# ║  Hints:                                                                 ║
+# ║  - bool(value) ensures the switch value is a Python boolean             ║
+# ║  - users can still filter continents via the chart's built-in legend    ║
+# ╚═════════════════════════════════════════════════════════════════════════╝
 
 # --------------------------
 # Callback 2: Update the scatter chart - STUB
@@ -234,31 +283,32 @@ app.layout = dbc.Container(
 #     # TODO: call get_graph_component with log_x and return the result
 
 
-# ╔════════════════════════════════════════════════════════════════════════════╗
-# ║ TODO 8:                                                                    ║
-# ║     Write a @callback that shows country details in the dbc.Card           ║
-# ║     when you click a point on the scatter chart                            ║
-# ║                                                                            ║
-# ║  - Outputs:                                                                ║
-# ║      1. "children" property of "id-card-header"(output country name here)  ║
-# ║      2. "children" property of "id-card-country" (output other info here)  ║
-# ║  - Input:                                                                  ║
-# ║      the "clickData" property of "id-graph-scatter"                        ║
-# ║      (a dictionary containing information about the clicked point)         ║
-# ║  - Inside the function:                                                    ║
-# ║      1. If click_data is None, return a placeholder header and message     ║
-# ║      2. Get the clicked point: point = click_data["points"][0]             ║
-# ║      3. Extract info directly from the point dict:                         ║
-# ║           - country name:   point["hovertext"]                             ║
-# ║           - gdpPerCap:      point["x"]                                     ║
-# ║           - lifeExp:        point["y"]                                     ║
-# ║      4. Return:                                                            ║
-#            country name in id-card-header                                    ║
-#            other info in id-card-country as id-card-country ║
-# ║                                                                            ║
-# ║  Docs (clickData): https://dash.plotly.com/interactive-graphing            ║
-# ║  Docs (Card): https://dash-bootstrap-components.opensource.faculty.ai/docs/components/card/
-# ╚════════════════════════════════════════════════════════════════════════════╝
+# ╔═════════════════════════════════════════════════════════════════════════╗
+# ║ TODO 8: Callback — show country details on click  (CHALLENGE)           ║
+# ║                                                                         ║
+# ║  This one is more challenging! Write a @callback that populates the     ║
+# ║  dbc.Card with details about whichever point the user clicks on the     ║
+# ║  scatter chart.                                                         ║
+# ║                                                                         ║
+# ║  Properties:                                                            ║
+# ║  - Outputs:                                                             ║
+# ║      1. "children" of "id-card-header" (country name)                   ║
+# ║      2. "children" of "id-card-country" (other details)                 ║
+# ║  - Input: "clickData" property of "id-graph-scatter"                    ║
+# ║  - If click_data is None, return a placeholder message                  ║
+# ║  - Otherwise extract info from the clicked point and display it         ║
+# ║                                                                         ║
+# ║  Docs: https://dash.plotly.com/interactive-graphing                     ║
+# ║                                                                         ║
+# ║  Hints:                                                                 ║
+# ║  - click_data["points"][0] returns a dict describing the clicked        ║
+# ║    bubble. It looks like:                                               ║
+# ║      {"hovertext": "Canada", "x": 36319.2, "y": 80.6,                   ║
+# ║       "marker.size": 33390141, "customdata": [2007], ...}               ║
+# ║  - use "hovertext" for country, "x" for gdpPercap, "y" for lifeExp      ║
+# ║  - a callback can return multiple outputs as a tuple:                   ║
+# ║      return header_value, body_value                                    ║
+# ╚═════════════════════════════════════════════════════════════════════════╝
 
 # --------------------------
 # Callback 3: Click on graph → show country details in Card - STUB
@@ -270,7 +320,7 @@ app.layout = dbc.Container(
 # )
 # def show_country_detail(click_data):
 #     # TODO: if click_data is None, return placeholder.
-#     # Otherwise extract country, gdp, life_exp, year directly from
+#     # Otherwise extract country, gdp, life_exp from
 #     # click_data["points"][0] and return header + body components.
 
 
