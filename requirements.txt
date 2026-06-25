@@ -1,6 +1,6 @@
-dash>=2.14
-pandas
-dash_bootstrap_components
-dash_bootstrap_templates
-dash-ag-grid
-plotly
+dash==4.1.0
+pandas==3.0.3
+dash-bootstrap-components==2.0.4
+dash-bootstrap-templates==2.1.0
+dash-ag-grid==35.2.0
+plotly==6.7.0
